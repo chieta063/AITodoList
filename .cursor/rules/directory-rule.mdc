@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+- ページはlib/pageに配置すること
+- ページ以外のwidgetはlib/widgetに配置すること
+- notifierはnotifier毎にディレクトリを作成してlib/notifierへ格納すること
+- usecaseはlib/use_caseに格納すること
