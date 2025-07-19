@@ -2,3 +2,7 @@
 alwaysApply: true
 ---
 - group,test,testwidgetのタイトルは日本語で記載すること
+- テストのTopのgroupは不要
+- テストの目的毎にgroup分けする
+- テストデータはmockitoを用いてMockデータを作成し、利用する
+- Mockデータはtest/mockディレクトリに格納する

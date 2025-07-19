@@ -1,14 +1,24 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/todo.dart';
 
-class TodoNotifier extends StateNotifier<List<Todo>> {
-  TodoNotifier() : super([]);
+part 'todo_notifier.g.dart';
+
+@riverpod
+class TodoNotifier extends _$TodoNotifier {
+  @override
+  List<Todo> build() {
+    return [];
+  }
 
   void addTodo(String title) {
     final todo = Todo(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       title: title,
     );
+    state = [...state, todo];
+  }
+
+  void addTodoWithId(Todo todo) {
     state = [...state, todo];
   }
 
@@ -30,7 +40,3 @@ class TodoNotifier extends StateNotifier<List<Todo>> {
     state = state.where((todo) => todo.id != id).toList();
   }
 }
-
-final todoProvider = StateNotifierProvider<TodoNotifier, List<Todo>>((ref) {
-  return TodoNotifier();
-});

@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+- ページの構成要素は全てWidgetを作成し、再利用可能にすること
+- ページのロジックは全てnotifierに記載すること
+- notifierはriverpod_annotationを利用してproviderで利用できるようにすること
+- ビジネスロジックはUseCaseに実装しnotifierからDIで利用できるようにすること
+- ダイアログはlib/dialogにファイルを作成し実装すること
+- providerは@riverpodを利用する
+- modelはfreezedを利用して作成すること

@@ -5,3 +5,5 @@ alwaysApply: true
 - ページ以外のwidgetはlib/widgetに配置すること
 - notifierはnotifier毎にディレクトリを作成してlib/notifierへ格納すること
 - usecaseはlib/use_caseに格納すること
+- テストはtestディレクトリへ格納すること
+- testディレクトリの構成はlibと同じにすること

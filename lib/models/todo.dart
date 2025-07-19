@@ -1,15 +1,12 @@
-class Todo {
-  final String id;
-  final String title;
-  bool isCompleted;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Todo({required this.id, required this.title, this.isCompleted = false});
+part 'todo.freezed.dart';
 
-  Todo copyWith({String? id, String? title, bool? isCompleted}) {
-    return Todo(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      isCompleted: isCompleted ?? this.isCompleted,
-    );
-  }
+@freezed
+class Todo with _$Todo {
+  const factory Todo({
+    required String id,
+    required String title,
+    @Default(false) bool isCompleted,
+  }) = _Todo;
 }

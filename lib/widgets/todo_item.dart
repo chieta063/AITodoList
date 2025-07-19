@@ -20,14 +20,15 @@ class TodoItem extends ConsumerWidget {
         child: const Icon(Icons.delete, color: Colors.white),
       ),
       onDismissed: (direction) {
-        ref.read(todoProvider.notifier).deleteTodo(todo.id);
+        final notifier = ref.read(todoNotifierProvider.notifier);
+        notifier.deleteTodo(todo.id);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('${todo.title}を削除しました'),
             action: SnackBarAction(
               label: '元に戻す',
               onPressed: () {
-                ref.read(todoProvider.notifier).addTodo(todo.title);
+                notifier.addTodoWithId(todo);
               },
             ),
           ),
@@ -37,7 +38,7 @@ class TodoItem extends ConsumerWidget {
         leading: Checkbox(
           value: todo.isCompleted,
           onChanged: (value) {
-            ref.read(todoProvider.notifier).toggleTodo(todo.id);
+            ref.read(todoNotifierProvider.notifier).toggleTodo(todo.id);
           },
         ),
         title: Text(
@@ -46,23 +47,6 @@ class TodoItem extends ConsumerWidget {
             decoration: todo.isCompleted ? TextDecoration.lineThrough : null,
             color: todo.isCompleted ? Colors.grey : null,
           ),
-        ),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete, color: Colors.red),
-          onPressed: () {
-            ref.read(todoProvider.notifier).deleteTodo(todo.id);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('${todo.title}を削除しました'),
-                action: SnackBarAction(
-                  label: '元に戻す',
-                  onPressed: () {
-                    ref.read(todoProvider.notifier).addTodo(todo.title);
-                  },
-                ),
-              ),
-            );
-          },
         ),
       ),
     );
